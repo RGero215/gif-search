@@ -7,6 +7,8 @@ var http = require('http');
 var giphy = require('giphy-api')();
 app.use(express.static('public'));
 
+const port = process.env.PORT || 3000
+
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -28,6 +30,6 @@ app.get('/greetings/:name', function (req, res) {
     res.render('greetings', {name: name});
   })
 
-app.listen(process.env.PORT || 3000, function () {
-  console.log('Gif Search listening on port localhost:3000!');
+app.listen(port, function () {
+  console.log(`Gif Search listening on port ${port}!`);
 });
